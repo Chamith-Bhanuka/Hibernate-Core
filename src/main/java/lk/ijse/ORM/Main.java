@@ -15,10 +15,15 @@ public class Main {
 
         Student student1 = new Student();
         student1.setId(1);
-        student1.setName("Kamal");
+        student1.setName("Anura");
         student1.setAddress("Colombo");
 
-        session.save(student1);
+        //save
+        //session.save(student1);
+
+        //update
+        session.update(student1);
+
         tx.commit();
         session.close();
     }
