@@ -6,6 +6,9 @@ import lk.ijse.ORM.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -33,19 +36,47 @@ public class Main {
         //session.delete(student1);
 
         //one-to-one relationship
+        //Student student = new Student();
+        //student.setId(1);
+        //student.setName("Tom");
+        //student.setAddress("Galle");
+
+        //Laptop laptop = new Laptop();
+        //laptop.setId(1);
+        //laptop.setBrand("Asus");
+        //laptop.setPrice(257000.0);
+
+        //student.setLaptop(laptop);
+
+        //session.save(laptop);
+        //session.save(student);
+
+        //One-to-Many
+        Laptop laptop1 = new Laptop();
+        laptop1.setId(1);
+        laptop1.setBrand("Asus");
+        laptop1.setPrice(100000);
+
+        Laptop laptop2 = new Laptop();
+        laptop2.setId(2);
+        laptop2.setBrand("HP");
+        laptop2.setPrice(20000);
+
+        List<Laptop> laptopList = new ArrayList<>();
+        laptopList.add(laptop1);
+        laptopList.add(laptop2);
+
         Student student = new Student();
         student.setId(1);
-        student.setName("Tom");
-        student.setAddress("Galle");
+        student.setName("Jack");
+        student.setAddress("Colombo");
+        student.setLaptops(laptopList);
 
-        Laptop laptop = new Laptop();
-        laptop.setId(1);
-        laptop.setBrand("Asus");
-        laptop.setPrice(257000.0);
+        laptop1.setStudent(student);
+        laptop2.setStudent(student);
 
-        student.setLaptop(laptop);
-
-        session.save(laptop);
+        session.save(laptop1);
+        session.save(laptop2);
         session.save(student);
 
         tx.commit();
