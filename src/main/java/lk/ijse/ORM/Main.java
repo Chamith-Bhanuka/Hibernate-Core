@@ -22,7 +22,14 @@ public class Main {
         //session.save(student1);
 
         //update
-        session.update(student1);
+        //session.update(student1);
+
+        //get
+        //Student student = session.get(Student.class,1);
+        //System.out.println(student.getName());
+
+        //delete
+        //session.delete(student1);
 
         tx.commit();
         session.close();
