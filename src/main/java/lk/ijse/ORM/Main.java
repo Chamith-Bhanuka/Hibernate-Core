@@ -20,5 +20,6 @@ public class Main {
 
         session.save(student1);
         tx.commit();
+        session.close();
     }
 }
