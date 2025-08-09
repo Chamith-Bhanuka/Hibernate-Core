@@ -70,7 +70,7 @@ public class Main {
         student.setId(1);
         student.setName("Jack");
         student.setAddress("Colombo");
-        student.setLaptops(laptopList);
+//        student.setLaptops(laptopList);
 
         laptop1.setStudent(student);
         laptop2.setStudent(student);

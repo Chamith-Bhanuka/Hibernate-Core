@@ -21,7 +21,4 @@ public class Student {
     private String name;
     private String address;
 
-    @OneToMany(mappedBy = "student")
-    private List<Laptop> laptops;
-
 }
