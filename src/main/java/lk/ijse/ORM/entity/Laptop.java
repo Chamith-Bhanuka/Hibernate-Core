@@ -2,7 +2,6 @@ package lk.ijse.ORM.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,13 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Student {
-
+public class Laptop {
     @Id
     private int id;
-    private String name;
-    private String address;
-
-    @OneToOne
-    private Laptop laptop;
+    private String brand;
+    private double price;
 }

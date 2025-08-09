@@ -1,6 +1,7 @@
 package lk.ijse.ORM;
 
 import lk.ijse.ORM.config.FactoryConfiguration;
+import lk.ijse.ORM.entity.Laptop;
 import lk.ijse.ORM.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,10 +14,10 @@ public class Main {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction tx = session.beginTransaction();
 
-        Student student1 = new Student();
-        student1.setId(1);
-        student1.setName("Anura");
-        student1.setAddress("Colombo");
+        //Student student1 = new Student();
+        //student1.setId(1);
+        //student1.setName("Anura");
+        //student1.setAddress("Colombo");
 
         //save
         //session.save(student1);
@@ -30,6 +31,22 @@ public class Main {
 
         //delete
         //session.delete(student1);
+
+        //one-to-one relationship
+        Student student = new Student();
+        student.setId(1);
+        student.setName("Tom");
+        student.setAddress("Galle");
+
+        Laptop laptop = new Laptop();
+        laptop.setId(1);
+        laptop.setBrand("Asus");
+        laptop.setPrice(257000.0);
+
+        student.setLaptop(laptop);
+
+        session.save(laptop);
+        session.save(student);
 
         tx.commit();
         session.close();
