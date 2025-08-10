@@ -5,6 +5,7 @@ import lk.ijse.ORM.entity.Laptop;
 import lk.ijse.ORM.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,42 +80,47 @@ public class Main {
 //        session.save(laptop2);
 //        session.save(student);
 
-        Student student1 = new Student();
-        student1.setId(1);
-        student1.setName("Kamal");
-        student1.setAddress("Colombo");
+//        Student student1 = new Student();
+//        student1.setId(1);
+//        student1.setName("Kamal");
+//        student1.setAddress("Colombo");
+//
+//        Student student2 = new Student();
+//        student2.setId(2);
+//        student2.setName("Bimal");
+//        student2.setAddress("Kandy");
+//
+//        Laptop laptop1 = new Laptop();
+//        laptop1.setId(1);
+//        laptop1.setBrand("Asus");
+//        laptop1.setPrice(100000);
+//
+//        Laptop laptop2 = new Laptop();
+//        laptop2.setId(2);
+//        laptop2.setBrand("Hp");
+//        laptop2.setPrice(20000);
+//
+//        List<Laptop> laptops = new ArrayList<>();
+//        laptops.add(laptop1);
+//        laptops.add(laptop2);
+//        student1.setLaptops(laptops);
+//        student2.setLaptops(laptops);
+//
+//        List<Student> students = new ArrayList<>();
+//        students.add(student1);
+//        students.add(student2);
+//        laptop1.setStudents(students);
+//        laptop2.setStudents(students);
+//
+//        session.save(student1);
+//        session.save(student2);
+//        session.save(laptop1);
+//        session.save(laptop2);
 
-        Student student2 = new Student();
-        student2.setId(2);
-        student2.setName("Bimal");
-        student2.setAddress("Kandy");
+        NativeQuery nativeQuery = session.createNativeQuery("select * from student");
+        List students = nativeQuery.list();
+        students.forEach(System.out::println);
 
-        Laptop laptop1 = new Laptop();
-        laptop1.setId(1);
-        laptop1.setBrand("Asus");
-        laptop1.setPrice(100000);
-
-        Laptop laptop2 = new Laptop();
-        laptop2.setId(2);
-        laptop2.setBrand("Hp");
-        laptop2.setPrice(20000);
-
-        List<Laptop> laptops = new ArrayList<>();
-        laptops.add(laptop1);
-        laptops.add(laptop2);
-        student1.setLaptops(laptops);
-        student2.setLaptops(laptops);
-
-        List<Student> students = new ArrayList<>();
-        students.add(student1);
-        students.add(student2);
-        laptop1.setStudents(students);
-        laptop2.setStudents(students);
-
-        session.save(student1);
-        session.save(student2);
-        session.save(laptop1);
-        session.save(laptop2);
 
         tx.commit();
         session.close();
