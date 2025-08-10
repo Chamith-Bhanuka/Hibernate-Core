@@ -52,6 +52,43 @@ public class Main {
         //session.save(student);
 
         //One-to-Many
+//        Laptop laptop1 = new Laptop();
+//        laptop1.setId(1);
+//        laptop1.setBrand("Asus");
+//        laptop1.setPrice(100000);
+//
+//        Laptop laptop2 = new Laptop();
+//        laptop2.setId(2);
+//        laptop2.setBrand("HP");
+//        laptop2.setPrice(20000);
+//
+//        List<Laptop> laptopList = new ArrayList<>();
+//        laptopList.add(laptop1);
+//        laptopList.add(laptop2);
+//
+//        Student student = new Student();
+//        student.setId(1);
+//        student.setName("Jack");
+//        student.setAddress("Colombo");
+////        student.setLaptops(laptopList);
+//
+//        laptop1.setStudent(student);
+//        laptop2.setStudent(student);
+//
+//        session.save(laptop1);
+//        session.save(laptop2);
+//        session.save(student);
+
+        Student student1 = new Student();
+        student1.setId(1);
+        student1.setName("Kamal");
+        student1.setAddress("Colombo");
+
+        Student student2 = new Student();
+        student2.setId(2);
+        student2.setName("Bimal");
+        student2.setAddress("Kandy");
+
         Laptop laptop1 = new Laptop();
         laptop1.setId(1);
         laptop1.setBrand("Asus");
@@ -59,25 +96,25 @@ public class Main {
 
         Laptop laptop2 = new Laptop();
         laptop2.setId(2);
-        laptop2.setBrand("HP");
+        laptop2.setBrand("Hp");
         laptop2.setPrice(20000);
 
-        List<Laptop> laptopList = new ArrayList<>();
-        laptopList.add(laptop1);
-        laptopList.add(laptop2);
+        List<Laptop> laptops = new ArrayList<>();
+        laptops.add(laptop1);
+        laptops.add(laptop2);
+        student1.setLaptops(laptops);
+        student2.setLaptops(laptops);
 
-        Student student = new Student();
-        student.setId(1);
-        student.setName("Jack");
-        student.setAddress("Colombo");
-//        student.setLaptops(laptopList);
+        List<Student> students = new ArrayList<>();
+        students.add(student1);
+        students.add(student2);
+        laptop1.setStudents(students);
+        laptop2.setStudents(students);
 
-        laptop1.setStudent(student);
-        laptop2.setStudent(student);
-
+        session.save(student1);
+        session.save(student2);
         session.save(laptop1);
         session.save(laptop2);
-        session.save(student);
 
         tx.commit();
         session.close();

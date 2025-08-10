@@ -1,12 +1,11 @@
 package lk.ijse.ORM.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -18,7 +17,6 @@ public class Laptop {
     private String brand;
     private double price;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id_custom")
-    private Student student;
+    @ManyToMany(mappedBy = "laptops")
+    private List<Student> students;
 }
